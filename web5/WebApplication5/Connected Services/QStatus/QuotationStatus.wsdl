@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddQuotationStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="statusId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="sName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="total" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddQuotationStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddQuotationStatusResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ViewAllQStatus">
+        <s:complexType />
+      </s:element>
+      <s:element name="ViewAllQStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ViewAllQStatusResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateQuotationStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="statusId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="sName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="total" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateQuotationStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateQuotationStatusResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddQuotationStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:AddQuotationStatus" />
+  </wsdl:message>
+  <wsdl:message name="AddQuotationStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:AddQuotationStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ViewAllQStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:ViewAllQStatus" />
+  </wsdl:message>
+  <wsdl:message name="ViewAllQStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:ViewAllQStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateQuotationStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateQuotationStatus" />
+  </wsdl:message>
+  <wsdl:message name="UpdateQuotationStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateQuotationStatusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="QuotationStatusSoap">
+    <wsdl:operation name="AddQuotationStatus">
+      <wsdl:input message="tns:AddQuotationStatusSoapIn" />
+      <wsdl:output message="tns:AddQuotationStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ViewAllQStatus">
+      <wsdl:input message="tns:ViewAllQStatusSoapIn" />
+      <wsdl:output message="tns:ViewAllQStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateQuotationStatus">
+      <wsdl:input message="tns:UpdateQuotationStatusSoapIn" />
+      <wsdl:output message="tns:UpdateQuotationStatusSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="QuotationStatusSoap" type="tns:QuotationStatusSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddQuotationStatus">
+      <soap:operation soapAction="http://tempuri.org/AddQuotationStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ViewAllQStatus">
+      <soap:operation soapAction="http://tempuri.org/ViewAllQStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateQuotationStatus">
+      <soap:operation soapAction="http://tempuri.org/UpdateQuotationStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="QuotationStatusSoap12" type="tns:QuotationStatusSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddQuotationStatus">
+      <soap12:operation soapAction="http://tempuri.org/AddQuotationStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ViewAllQStatus">
+      <soap12:operation soapAction="http://tempuri.org/ViewAllQStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateQuotationStatus">
+      <soap12:operation soapAction="http://tempuri.org/UpdateQuotationStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="QuotationStatus">
+    <wsdl:port name="QuotationStatusSoap" binding="tns:QuotationStatusSoap">
+      <soap:address location="http://localhost:54419/QuotationStatus.asmx" />
+    </wsdl:port>
+    <wsdl:port name="QuotationStatusSoap12" binding="tns:QuotationStatusSoap12">
+      <soap12:address location="http://localhost:54419/QuotationStatus.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

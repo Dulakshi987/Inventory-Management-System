@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="inventoryId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="sName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pNo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sale_Price" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="quantity" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="discount" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="total_Price" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="expire_Date" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddInventoryResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ViewAllInventories">
+        <s:complexType />
+      </s:element>
+      <s:element name="ViewAllInventoriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ViewAllInventoriesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="inventoryId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="sName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pNo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sale_Price" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="quantity" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="discount" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="total_price" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="expire_Date" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateInventoryResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:AddInventory" />
+  </wsdl:message>
+  <wsdl:message name="AddInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:AddInventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ViewAllInventoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:ViewAllInventories" />
+  </wsdl:message>
+  <wsdl:message name="ViewAllInventoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:ViewAllInventoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateInventory" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateInventoryResponse" />
+  </wsdl:message>
+  <wsdl:portType name="InventorySoap">
+    <wsdl:operation name="AddInventory">
+      <wsdl:input message="tns:AddInventorySoapIn" />
+      <wsdl:output message="tns:AddInventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ViewAllInventories">
+      <wsdl:input message="tns:ViewAllInventoriesSoapIn" />
+      <wsdl:output message="tns:ViewAllInventoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInventory">
+      <wsdl:input message="tns:UpdateInventorySoapIn" />
+      <wsdl:output message="tns:UpdateInventorySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InventorySoap" type="tns:InventorySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddInventory">
+      <soap:operation soapAction="http://tempuri.org/AddInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ViewAllInventories">
+      <soap:operation soapAction="http://tempuri.org/ViewAllInventories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInventory">
+      <soap:operation soapAction="http://tempuri.org/UpdateInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InventorySoap12" type="tns:InventorySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddInventory">
+      <soap12:operation soapAction="http://tempuri.org/AddInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ViewAllInventories">
+      <soap12:operation soapAction="http://tempuri.org/ViewAllInventories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInventory">
+      <soap12:operation soapAction="http://tempuri.org/UpdateInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Inventory">
+    <wsdl:port name="InventorySoap" binding="tns:InventorySoap">
+      <soap:address location="http://localhost:54419/Inventory.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InventorySoap12" binding="tns:InventorySoap12">
+      <soap12:address location="http://localhost:54419/Inventory.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
